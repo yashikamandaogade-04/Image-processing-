@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Processing Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">IMAGE PROCESSING LAB</div>
+  <nav><button onclick="goHome()">Home</button><button onclick="prevPractical()">‹ Previous</button><button onclick="nextPractical()">Next ›</button></nav>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <span class="eyebrow">IMAGE PROCESSING TECHNIQUES</span>
+    <h1>Explore • Process • Analyze • Compare</h1>
+    <p>Upload one image and move through the practicals one by one. Each practical shows the input, processed output and a short explanation.</p>
+    <label class="upload-main">Upload Your Image <input id="imageInput" type="file" accept="image/*"></label>
+    <div id="homeStatus">No image selected yet.</div>
+  </section>
+  <section class="home-card">
+    <div><span class="small-label">CURRENT WORKFLOW</span><h2>12 practicals · one workspace</h2></div>
+    <button class="primary" onclick="openPractical(1)">Start Practical 01 →</button>
+  </section>
+  <div class="mini-note">Your uploaded image stays available while you move from Practical 01 to Practical 12.</div>
+</main>
+
+<main id="lab" hidden>
+  <div class="lab-top">
+    <button class="back" onclick="goHome()">← Home</button>
+    <div>
+      <span class="eyebrow" id="pNo">PRACTICAL 01</span>
+      <h1 id="pTitle"></h1>
+    </div>
+    <select id="practicalSelect" onchange="openPractical(Number(this.value))"></select>
+  </div>
+
+  <section class="workspace">
+    <div class="image-panel">
+      <div class="panel-head"><span>INPUT IMAGE</span><span class="tag" id="inputTag">ORIGINAL</span></div>
+      <div class="canvas-box"><canvas id="inputCanvas"></canvas><div class="empty" id="inputEmpty">Upload an image from Home to begin</div></div>
+    </div>
+
+    <div class="image-panel output-panel">
+      <div class="panel-head"><span>OUTPUT</span><span class="tag output-tag">PROCESSED</span></div>
+      <div class="canvas-box"><canvas id="outputCanvas"></canvas><div class="empty" id="outputEmpty">Output will appear here</div></div>
+    </div>
+  </section>
+
+  <section class="controls">
+    <div class="control-title"><span>PROCESSING</span><span id="processName"></span></div>
+    <div id="controlsArea"></div>
+    <button class="primary" onclick="processCurrent()">Apply Technique →</button>
+  </section>
+
+  <section class="description">
+    <span class="small-label">DESCRIPTION</span>
+    <p id="description"></p>
+  </section>
+
+  <div class="step-nav">
+    <button onclick="prevPractical()">← Previous</button>
+    <span id="stepCount">01 / 12</span>
+    <button onclick="nextPractical()">Next Practical →</button>
+  </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
